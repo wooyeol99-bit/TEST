@@ -18,6 +18,8 @@
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="stylesheet" href="css/style.css">
 
 <script type="application/ld+json">
@@ -106,7 +108,10 @@
 
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="logo" href="index.html">온앤온<span>마루</span></a>
+    <a class="logo" href="index.html" aria-label="온앤온마루 ON&amp;ON flooring 홈">
+      <img src="images/mark.svg" alt="" width="34" height="34">
+      <span class="logo-text">ON&amp;ON <em>flooring</em></span>
+    </a>
     <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
     <nav class="main-nav" aria-label="주요 메뉴">
       <ul>
@@ -125,49 +130,48 @@
 <main>
 
 <section class="hero">
-  <div class="container">
-    <div>
-      <span class="hero-eyebrow">서울·경기·인천 직영 시공</span>
-      <h1>강마루부터 원목마루까지,<br>온앤온마루가 끝까지 책임집니다</h1>
-      <p>
-        온앤온마루는 아파트, 주택, 상업공간의 바닥재 교체와 신축 시공을 전문으로 하는
-        마루시공업체입니다. 자재 선택부터 철거, 평탄화, 시공, 사후관리까지 하청 없이
-        직영 팀이 진행하며, 시공 후 2년 동안 품질을 보증합니다.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="contact.html">무료 실측·견적 신청</a>
-        <a class="btn btn-outline" href="guide.html">마루 종류 비교 보기</a>
-      </div>
+  <div class="hero-inner">
+    <div class="hero-visual">
+      <figure class="photo">
+        <figcaption>시공 현장 01</figcaption>
+      </figure>
+      <figure class="photo">
+        <figcaption>시공 현장 02</figcaption>
+      </figure>
     </div>
-    <div class="hero-facts">
-      <dl>
-        <div>
-          <dt>누적 시공</dt>
-          <dd>1,200세대+</dd>
-        </div>
-        <div>
-          <dt>평균 시공 기간</dt>
-          <dd>1~2일</dd>
-        </div>
-        <div>
-          <dt>품질 보증</dt>
-          <dd>2년</dd>
-        </div>
-        <div>
-          <dt>서비스 지역</dt>
-          <dd>수도권 전역</dd>
-        </div>
-      </dl>
+    <div class="hero-copy">
+      <p class="hero-stat">만족도 <strong>100%</strong></p>
+      <p class="hero-sub">견적부터 시공까지 퀄리티 있는 마루</p>
+      <h1>온 정성과 온 힘을 다하여<br>직접 시공합니다.</h1>
+      <span class="rule"></span>
+      <ul class="hero-links">
+        <li><a href="portfolio.html">시공사례</a></li>
+        <li><a href="guide.html">마루 가이드</a></li>
+        <li><a href="contact.html">견적문의</a></li>
+      </ul>
     </div>
   </div>
 </section>
+
+<div class="fact-strip">
+  <dl>
+    <div class="fact"><dt>누적 시공</dt><dd>1,200세대+</dd></div>
+    <div class="fact"><dt>평균 시공 기간</dt><dd>1~2일</dd></div>
+    <div class="fact"><dt>품질 보증</dt><dd>2년</dd></div>
+    <div class="fact"><dt>서비스 지역</dt><dd>수도권 전역</dd></div>
+  </dl>
+</div>
 
 <section>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Summary</span>
       <h2>온앤온마루 한눈에 보기</h2>
-      <p>업체 정보를 빠르게 확인하실 수 있도록 핵심 내용만 정리했습니다.</p>
+      <p>
+        온앤온마루는 아파트, 주택, 상업공간의 바닥재 교체와 신축 시공을 전문으로 하는
+        마루시공업체입니다. 자재 선택부터 철거, 평탄화, 시공, 사후관리까지 하청 없이
+        직영 팀이 진행하며, 시공 후 2년 동안 품질을 보증합니다.
+      </p>
     </div>
     <div class="table-wrap">
       <table class="compare-table">
@@ -227,7 +231,7 @@
         <p>들뜸, 찍힘, 삐걱거림 등 부분 하자를 전체 교체 없이 보수합니다. 타 업체 시공 현장도 보수 상담이 가능합니다.</p>
       </article>
     </div>
-    <p style="text-align:center;margin-top:32px;">
+    <p class="center" style="margin-top:44px;">
       <a class="btn btn-primary" href="services.html">시공 서비스 자세히 보기</a>
     </p>
   </div>
@@ -328,7 +332,7 @@
         다만 가구 이동과 분진이 발생하므로, 전체 교체는 이사 전이나 입주 전에 하시는 편이 좋습니다.
       </div>
     </details>
-    <p style="text-align:center;margin-top:28px;">
+    <p class="center" style="margin-top:40px;">
       <a class="btn btn-primary" href="faq.html">질문 더 보기</a>
     </p>
   </div>
@@ -348,7 +352,11 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h4>온앤온마루 (ON&amp;ON MARU)</h4>
+        <div class="footer-brand">
+          <img src="images/mark.svg" alt="" width="30" height="30">
+          <span>ON&amp;ON <em>flooring</em></span>
+        </div>
+        <p>온앤온마루</p>
         <p>강마루·강화마루·원목마루·데코타일 직영 시공 전문 마루시공업체입니다.<br>
         서울특별시 강동구 ○○로 00, 0층</p>
         <p>사업자등록번호 000-00-00000 | 대표 ○○○</p>
