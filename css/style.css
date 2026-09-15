@@ -3,11 +3,12 @@
   --black: #0a0a0a;
   --ink: #141414;
   --white: #ffffff;
-  --paper: #f7f7f7;
-  --line: #e2e2e2;
+  --paper: #f1efec;
+  --paper-2: #e6e3df;
+  --line: #dcd8d3;
   --line-dark: rgba(255, 255, 255, 0.22);
   --grey-400: #9a9a9a;
-  --grey-600: #6a6a6a;
+  --grey-600: #666060;
   --grey-700: #4c4c4c;
   --max-width: 1180px;
 }
@@ -65,27 +66,22 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
 }
 
-.logo { display: flex; align-items: center; gap: 11px; }
-.logo img { width: 34px; height: 34px; }
-.logo-text {
-  font-size: 1.22rem;
-  letter-spacing: -0.2px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.logo-text em { font-style: normal; font-weight: 300; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-badge { width: auto; height: 38px; }
+.logo-wordmark { width: auto; height: 17px; }
 
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 28px;
   margin: 0;
   padding: 0;
 }
 .main-nav a {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.66);
   padding: 4px 0;
   border-bottom: 1px solid transparent;
   transition: color 0.15s;
@@ -271,7 +267,50 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Sections ---------- */
 section { padding: 84px 0; }
 .section-alt { background: var(--paper); }
+.section-deep { background: var(--paper-2); }
 .section-dark { background: var(--black); color: var(--white); }
+.section-dark .section-head p { color: rgba(255, 255, 255, 0.62); }
+.section-dark .eyebrow { color: rgba(255, 255, 255, 0.45); }
+.section-dark .card {
+  background: #151515;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+}
+.section-dark .card p,
+.section-dark .card ul { color: rgba(255, 255, 255, 0.62); }
+.section-dark .card ul strong { color: var(--white); }
+.section-dark .grid-2,
+.section-dark .grid-3 { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.12); }
+
+/* 제목은 진하고 좁게, 설명은 흐리고 넓게 — 둘을 눈으로 바로 구분 */
+h1, h2, h3, h4 { color: var(--ink); }
+.section-dark h1, .section-dark h2,
+.section-dark h3, .section-dark h4 { color: var(--white); }
+
+main p, main li { color: var(--grey-600); }
+main .section-head h1,
+main .section-head h2,
+main h2, main h3, main h4 { font-weight: 700; }
+main strong { color: var(--ink); font-weight: 700; }
+
+/* 어두운 블록은 위 규칙에서 되돌린다 */
+.hero, .cta-band, .section-dark { color: var(--white); }
+.hero h1, .hero p, .hero li, .hero a, .hero strong,
+.cta-band h2, .cta-band strong,
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4,
+.section-dark strong { color: var(--white); }
+.hero .hero-sub { color: rgba(255, 255, 255, 0.62); }
+.cta-band p { color: rgba(255, 255, 255, 0.6); }
+.section-dark p, .section-dark li { color: rgba(255, 255, 255, 0.66); }
+
+/* 본문 중간 제목에 여백과 라인을 줘서 블록 경계를 만든다 */
+main section > .container > h2 {
+  margin: 56px 0 20px;
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+  font-size: 1.35rem;
+}
+main section > .container > h2:first-of-type { margin-top: 0; }
 
 .section-head { max-width: 680px; margin: 0 auto 48px; text-align: center; }
 .eyebrow {
@@ -441,6 +480,53 @@ h3 { letter-spacing: -0.4px; }
   padding: 4px 11px;
 }
 
+/* ---------- Color matching ---------- */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 860px) { .match-grid { grid-template-columns: 1fr; } }
+
+.match-card { background: var(--white); padding: 0 0 26px; }
+.section-alt .match-card { background: var(--paper); }
+
+.swatch-pair { display: flex; height: 132px; }
+.swatch {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.swatch-label-dark { color: rgba(0, 0, 0, 0.55); }
+.swatch-label-light { color: rgba(255, 255, 255, 0.8); }
+
+.match-body { padding: 24px 26px 0; }
+.match-body h3 { margin: 0 0 6px; font-size: 1.08rem; }
+.match-body .match-floor {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--ink);
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+.match-body p { margin: 0 0 12px; font-size: 0.94rem; }
+.match-body dl { margin: 0; font-size: 0.9rem; }
+.match-body dt {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.78rem;
+  letter-spacing: 0.8px;
+  margin-top: 10px;
+}
+.match-body dd { margin: 2px 0 0; color: var(--grey-600); }
+
 /* ---------- FAQ ---------- */
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-item:first-of-type { border-top: 1px solid var(--line); }
@@ -585,10 +671,14 @@ form.contact-form { display: grid; gap: 18px; }
 }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-.footer-brand img { width: 30px; height: 30px; }
-.footer-brand span { font-size: 1.05rem; font-weight: 600; color: var(--white); }
-.footer-brand em { font-style: normal; font-weight: 300; }
+.footer-brand { margin-bottom: 14px; }
+.footer-brand img { width: auto; height: 74px; }
+.footer-kr {
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 14px !important;
+}
 
 .site-footer h4 {
   color: var(--white);
