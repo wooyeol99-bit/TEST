@@ -131,52 +131,48 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Hero ---------- */
 .hero {
+  position: relative;
   background: var(--black);
   color: var(--white);
   padding: 0;
-}
-.hero-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 56px 24px 64px;
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 56px;
+  overflow: hidden;
+  min-height: min(78vh, 620px);
+  display: flex;
   align-items: center;
 }
 
-.hero-visual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  /* 모노크롬 컨셉 유지 — 컬러로 쓰려면 이 줄만 지우면 됩니다 */
+  filter: grayscale(1) brightness(1.18) contrast(1.02);
+}
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    rgba(8, 8, 8, 0.92) 0%,
+    rgba(8, 8, 8, 0.80) 38%,
+    rgba(8, 8, 8, 0.42) 68%,
+    rgba(8, 8, 8, 0.22) 100%);
 }
 
-.photo {
-  margin: 0;
+.hero-inner {
   position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background:
-    repeating-linear-gradient(115deg, #1c1c1c 0 14px, #232323 14px 28px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-.photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.06);
-}
-.photo figcaption {
-  position: relative;
+  z-index: 1;
   width: 100%;
-  padding: 12px;
-  font-size: 0.78rem;
-  letter-spacing: 0.4px;
-  color: rgba(255, 255, 255, 0.45);
-  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 72px 24px 80px;
 }
-.photo:has(img) figcaption { display: none; }
+.hero-copy { max-width: 620px; }
 
 .hero-stat {
   margin: 0;
@@ -227,9 +223,17 @@ a { color: inherit; text-decoration: none; }
 .hero-links a:hover { gap: 18px; }
 
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px 52px; }
+  .hero { min-height: 0; }
+  .hero-inner { padding: 56px 24px 64px; }
   .hero-copy h1 { margin-top: 32px; }
   .rule { margin: 30px 0 22px; }
+  /* 좁은 화면에서는 가로 그라데이션으로 글자가 가려지지 않으므로 세로로 바꾼다 */
+  .hero-media::after {
+    background: linear-gradient(180deg,
+      rgba(8, 8, 8, 0.62) 0%,
+      rgba(8, 8, 8, 0.76) 60%,
+      rgba(8, 8, 8, 0.84) 100%);
+  }
 }
 
 /* ---------- Fact strip ---------- */
