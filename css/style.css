@@ -150,18 +150,17 @@ a { color: inherit; text-decoration: none; }
   height: 100%;
   object-fit: cover;
   object-position: center 58%;
-  /* 모노크롬 컨셉 유지 — 컬러로 쓰려면 이 줄만 지우면 됩니다 */
-  filter: grayscale(1) brightness(1.18) contrast(1.02);
+  filter: brightness(1.06) saturate(1.04);
 }
 .hero-media::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg,
-    rgba(8, 8, 8, 0.92) 0%,
-    rgba(8, 8, 8, 0.80) 38%,
-    rgba(8, 8, 8, 0.42) 68%,
-    rgba(8, 8, 8, 0.22) 100%);
+    rgba(8, 8, 8, 0.88) 0%,
+    rgba(8, 8, 8, 0.72) 38%,
+    rgba(8, 8, 8, 0.30) 68%,
+    rgba(8, 8, 8, 0.10) 100%);
 }
 
 .hero-inner {
@@ -471,7 +470,7 @@ h3 { letter-spacing: -0.4px; }
   font-weight: 600;
   line-height: 1.6;
 }
-.portfolio-thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); }
+.portfolio-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .portfolio-body { padding: 24px 22px 26px; }
 .portfolio-body h3 { margin: 0 0 8px; font-size: 1.05rem; }
 .portfolio-body p { margin: 0; font-size: 0.93rem; color: var(--grey-600); }
@@ -601,6 +600,46 @@ h3 { letter-spacing: -0.4px; }
   margin: 20px 0 0;
   font-size: 0.88rem;
   color: var(--grey-400);
+}
+
+/* ---------- Case study ---------- */
+.case-meta { width: 100%; border-collapse: collapse; background: var(--white); font-size: 0.95rem; }
+.case-meta th, .case-meta td {
+  border: 1px solid var(--line);
+  padding: 14px 18px;
+  text-align: left;
+}
+.case-meta th {
+  background: var(--paper);
+  font-weight: 700;
+  white-space: nowrap;
+  width: 140px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 1000px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+.gallery figure { margin: 0; background: var(--white); }
+.gallery img {
+  width: 100%;
+  /* height 속성이 프레젠테이션 힌트로 들어와 aspect-ratio를 덮으므로 auto로 풀어 준다 */
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: var(--paper);
+}
+.gallery figcaption {
+  padding: 10px 12px 14px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--grey-600);
 }
 
 /* ---------- FAQ ---------- */

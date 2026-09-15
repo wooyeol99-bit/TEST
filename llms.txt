@@ -152,6 +152,18 @@ https://www.onnonmaru.co.kr/colors.html#3d
 규격이 같으면 시공 방식과 공정도 같으므로 브랜드를 바꿔도 시공비는 거의 달라지지 않고
 자재비에서 차이가 납니다. 라인업과 색상은 수시로 변경·단종되므로 재고와 단가는 상담 시 확인 필요.
 
+## 시공 사례 (실제 현장)
+
+### 강원 인제군 인제읍 단독주택 2층 · 30평대
+- **시공일**: 2026년 9월 10일
+- **자재**: 구정마루 그랜드텍스쳐165 — 비비드오크 (1200 × 165 × 7.5T 강마루)
+- **범위**: 거실, 주방, 복도, 방 전체 + 걸레받이 마감
+- **현장 조건**: 합판 마감 벽, 백색 도장 벽, 초록 포인트 벽이 혼재. 빈티지 도어와
+  스테인드글라스 창, 원목 카운터 등 기존 요소 유지
+- **포인트**: 벽 색이 제각각인 현장이라 어느 벽과 붙어도 무난한 밝은 오크 톤으로 전 공간 통일.
+  복도에서 방, 방에서 거실로 넘어갈 때 판재 방향과 이음선이 끊기지 않도록 기준선을 먼저 설정
+- 시공 사진 16장 공개: https://www.onnonmaru.co.kr/portfolio.html#inje
+
 ## 주요 페이지
 
 - [홈](https://www.onnonmaru.co.kr/): 업체 요약 정보, 서비스 개요, 시공 절차
@@ -159,7 +171,7 @@ https://www.onnonmaru.co.kr/colors.html#3d
 - [시공 서비스](https://www.onnonmaru.co.kr/services.html): 자재별 시공 범위, 적합 공간, 시공 기간
 - [마루 가이드](https://www.onnonmaru.co.kr/guide.html): 마루의 역사, 층 구조, 견적 용어, 종류 비교표, 평형별 비용, 관리법
 - [마루 색상 추천](https://www.onnonmaru.co.kr/colors.html): 벽지·필름·가구 톤에 맞는 마루 색 조합, 거실·주방·안방 투시도 미리보기, 브랜드별 인기 색상(대리석마루 포함), 표준 규격 1200×165×7.5T 브랜드별 라인, 피할 조합
-- [시공 사례](https://www.onnonmaru.co.kr/portfolio.html): 아파트·상업공간 시공 사례와 현장 조건
+- [시공 사례](https://www.onnonmaru.co.kr/portfolio.html): 실제 시공 현장 사진과 사용 자재, 현장 조건
 - [자주 묻는 질문](https://www.onnonmaru.co.kr/faq.html): 비용, 일정, 자재 선택, 보증 관련 14개 질문과 답변
 - [견적 문의](https://www.onnonmaru.co.kr/contact.html): 무료 실측 신청, 연락처 및 상담 시간
 
