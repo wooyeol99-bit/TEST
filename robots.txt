@@ -1,0 +1,66 @@
+# 온앤온마루 (ON&ON MARU) - https://www.onnonmaru.co.kr/
+# 검색엔진 및 AI 크롤러 접근 정책
+
+User-agent: *
+Allow: /
+
+# --- 검색엔진 ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yeti          # 네이버 검색
+Allow: /
+
+User-agent: Daumoa        # 다음 검색
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# --- AI 검색 / 생성형 엔진 크롤러 ---
+User-agent: GPTBot                 # OpenAI 학습 크롤러
+Allow: /
+
+User-agent: OAI-SearchBot          # ChatGPT 검색
+Allow: /
+
+User-agent: ChatGPT-User           # ChatGPT 브라우징
+Allow: /
+
+User-agent: ClaudeBot              # Anthropic Claude
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot          # Perplexity
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended        # Gemini / AI Overviews
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent     # Meta AI
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://www.onnonmaru.co.kr/sitemap.xml
