@@ -621,7 +621,22 @@ form.contact-form { display: grid; gap: 18px; }
   border-bottom-color: var(--black);
 }
 .contact-form textarea { resize: vertical; }
-.contact-form button { justify-self: start; margin-top: 6px; }
+.form-intro { font-size: 0.95rem; margin-bottom: 22px; }
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.form-actions .btn { flex: 1 1 auto; text-align: center; cursor: pointer; }
+
+.form-hint {
+  font-size: 0.86rem;
+  color: var(--grey-400);
+  margin: 14px 0 0;
+}
+.form-hint a { color: var(--ink); font-weight: 700; border-bottom: 1px solid var(--line); }
 
 .note-box {
   border-left: 2px solid var(--black);
