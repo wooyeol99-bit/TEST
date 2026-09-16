@@ -689,6 +689,7 @@ h3 { letter-spacing: -0.4px; }
   background: var(--line);
   border: 1px solid var(--line);
 }
+.gallery.cols-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 1000px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
 
