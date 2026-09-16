@@ -708,6 +708,57 @@ h3 { letter-spacing: -0.4px; }
   color: var(--grey-600);
 }
 
+/* ---------- 시공 전/후 비교 ---------- */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin: 0 0 30px;
+}
+.compare > figure { position: relative; margin: 0; background: var(--white); }
+.compare > figure img {
+  display: block;
+  width: 100%;
+  /* height 속성이 프레젠테이션 힌트로 들어와 aspect-ratio를 덮으므로 auto로 풀어 준다 */
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: var(--paper);
+}
+.compare-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: rgba(10, 10, 10, 0.84);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 12px;
+}
+.compare-tag.is-after {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.compare-cap {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--white);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--grey-600);
+}
+.compare-cap strong { color: var(--ink); font-weight: 700; }
+@media (max-width: 640px) {
+  .compare-tag { font-size: 0.62rem; letter-spacing: 1px; padding: 4px 8px; }
+  .compare-cap { padding: 10px 11px; font-size: 0.8rem; }
+}
+
 /* ---------- FAQ ---------- */
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-item:first-of-type { border-top: 1px solid var(--line); }
