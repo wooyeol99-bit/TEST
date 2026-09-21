@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>포코펫 | 나만의 애완 다마고치 키우기</title>
+<meta name="description" content="포코펫은 알에서 깨어난 애완동물을 밥·놀이·목욕으로 돌보며 어른으로 키우는 다마고치 게임입니다. 설치하면 홈 화면에서 바로 열리고, 껐다 켜도 시간이 흐른 만큼 펫이 자라 있습니다.">
+<meta name="theme-color" content="#4c9f70">
+<meta name="color-scheme" content="light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="포코펫">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="포코펫 | 나만의 애완 다마고치 키우기">
+<meta property="og:description" content="알에서 깨어난 펫을 밥·놀이·목욕으로 돌보며 어른으로 키우는 다마고치 게임. 설치해서 홈 화면에서 바로 즐기세요.">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<div id="app" class="app">
+
+  <!-- ===== 시작 화면 ===== -->
+  <section id="intro" class="screen intro" aria-label="게임 시작">
+    <div class="intro-inner">
+      <p class="intro-eyebrow">나만의 애완 다마고치</p>
+      <h1 class="intro-title">포코펫</h1>
+      <p class="intro-lead">알을 고르고, 이름을 지어주고, 매일 돌봐주세요.<br>밥과 놀이와 잠으로 펫은 조금씩 자랍니다.</p>
+
+      <div class="intro-step" data-step="1">
+        <h2 class="intro-h">1. 알을 고르세요</h2>
+        <div id="species-picker" class="species-picker" role="radiogroup" aria-label="알 고르기"></div>
+      </div>
+
+      <div class="intro-step" data-step="2">
+        <h2 class="intro-h">2. 이름을 지어주세요</h2>
+        <input id="pet-name" class="text-input" type="text" maxlength="8" placeholder="예: 뽀삐" autocomplete="off" aria-label="펫 이름">
+        <p class="hint">한글·영문 8글자까지</p>
+      </div>
+
+      <div class="intro-step" data-step="3">
+        <h2 class="intro-h">3. 난이도를 고르세요</h2>
+        <div class="mode-picker" role="radiogroup" aria-label="난이도">
+          <button type="button" class="mode-btn is-on" data-mode="easy" role="radio" aria-checked="true">
+            <strong>순한맛</strong><span>펫이 절대 떠나지 않아요. 저학년 추천</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="hard" role="radio" aria-checked="false">
+            <strong>매운맛</strong><span>오래 방치하면 이별할 수 있어요</span>
+          </button>
+        </div>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary btn-big" type="button">알 받기</button>
+      <p class="intro-foot">기록은 이 기기에만 저장됩니다. 홈 화면에 추가하면 앱처럼 열려요.</p>
+    </div>
+  </section>
+
+  <!-- ===== 게임 본화면 ===== -->
+  <main id="game" class="screen game" hidden>
+    <header class="hud">
+      <div class="hud-pet">
+        <strong id="hud-name" class="hud-name">펫</strong>
+        <span id="hud-meta" class="hud-meta">아기 · 0일</span>
+      </div>
+      <div class="hud-right">
+        <span class="coin" id="hud-coins" aria-label="코인"><i class="coin-dot" aria-hidden="true"></i><b>0</b></span>
+        <button class="icon-btn" type="button" data-open="menu" aria-label="메뉴">≡</button>
+      </div>
+    </header>
+
+    <div class="stage" id="stage">
+      <div class="stage-bg" id="stage-bg"></div>
+      <div class="stage-sky" id="stage-sky" aria-hidden="true"></div>
+      <div class="speech" id="speech" role="status" aria-live="polite" hidden></div>
+      <div class="pet-wrap" id="pet-wrap">
+        <button class="pet-btn" id="pet-btn" type="button" aria-label="펫 쓰다듬기">
+          <div class="pet-holder" id="pet-holder"></div>
+        </button>
+        <div class="pet-shadow" aria-hidden="true"></div>
+      </div>
+      <div class="poops" id="poops" aria-label="치울 것"></div>
+      <div class="fx" id="fx" aria-hidden="true"></div>
+      <div class="stage-floor" aria-hidden="true"></div>
+    </div>
+
+    <section class="gauges" aria-label="상태">
+      <div class="gauge" data-key="hunger"><span class="g-ico" aria-hidden="true">🍚</span><span class="g-name">배부름</span><div class="g-bar"><i></i></div></div>
+      <div class="gauge" data-key="happy"><span class="g-ico" aria-hidden="true">💗</span><span class="g-name">기분</span><div class="g-bar"><i></i></div></div>
+      <div class="gauge" data-key="clean"><span class="g-ico" aria-hidden="true">🫧</span><span class="g-name">청결</span><div class="g-bar"><i></i></div></div>
+      <div class="gauge" data-key="energy"><span class="g-ico" aria-hidden="true">⚡</span><span class="g-name">체력</span><div class="g-bar"><i></i></div></div>
+      <div class="gauge gauge-wide" data-key="exp"><span class="g-ico" aria-hidden="true">🌱</span><span class="g-name" id="exp-label">성장</span><div class="g-bar g-exp"><i></i></div></div>
+    </section>
+
+    <nav class="dock" aria-label="돌보기">
+      <button class="act" type="button" data-act="feed"><span aria-hidden="true">🍚</span>밥주기</button>
+      <button class="act" type="button" data-act="play"><span aria-hidden="true">🎮</span>놀아주기</button>
+      <button class="act" type="button" data-act="wash"><span aria-hidden="true">🫧</span>씻기기</button>
+      <button class="act" type="button" data-act="sleep"><span aria-hidden="true">🌙</span>재우기</button>
+      <button class="act" type="button" data-act="heal"><span aria-hidden="true">💊</span>치료</button>
+      <button class="act" type="button" data-act="shop"><span aria-hidden="true">🛒</span>상점</button>
+    </nav>
+  </main>
+
+  <div id="modal-root" class="modal-root" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/state.js"></script>
+<script src="js/pet.js"></script>
+<script src="js/minigames.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
