@@ -760,6 +760,42 @@ h3 { letter-spacing: -0.4px; }
   .compare-cap { padding: 10px 11px; font-size: 0.8rem; }
 }
 
+/* ---------- 접이식 상세 설명 (.more) ----------
+   요약은 항상 보이고 긴 설명은 접어 둔다.
+   details 안의 내용은 HTML에 그대로 남아 있어 검색·AI 크롤러는 모두 읽는다. */
+.more {
+  margin: 18px 0 0;
+  border-top: 1px solid var(--line);
+}
+.more > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--grey-400);
+}
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::after {
+  content: "+";
+  flex: none;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
+}
+.more[open] > summary::after { content: "\2212"; }
+.more > summary:hover { color: var(--ink); }
+.more > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.more[open] > summary { color: var(--ink); border-bottom: 1px solid var(--line); }
+.more > *:not(summary) { margin-top: 16px; margin-bottom: 0; }
+.more > *:last-child { margin-bottom: 16px; }
+
 /* ---------- FAQ ---------- */
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-item:first-of-type { border-top: 1px solid var(--line); }
