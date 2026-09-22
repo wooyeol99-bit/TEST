@@ -1,9 +1,8 @@
-/* 포코펫 — 시작과 시간 흐름 루프 */
+/* 우리집 강아지 — 시작과 시간 흐름 루프 */
 (function () {
   'use strict';
   var G = window.Game, U = window.UI;
-  var TICK_MS = 20000;
-  var timer = null;
+  var TICK_MS = 20000, timer = null;
 
   function handleEvents(res) {
     var died = false, grew = null;
@@ -17,7 +16,7 @@
   }
 
   function pulse(showReport) {
-    if (!G.pet) return;
+    if (!G.dog) return;
     var res = G.tick();
     G.save();
     var ended = handleEvents(res);
@@ -31,23 +30,23 @@
   }
 
   function boot() {
-    var hasPet = G.load();
+    var has = G.load();
     if (window.SFX) SFX.setEnabled(G.state.sound !== false);
     U.init();
 
-    if (hasPet && G.state.pet && !G.state.pet.dead) {
+    if (has && G.dog && !G.dog.dead) {
       U.showGame();
       pulse(true);
       var bonus = G.claimDailyBonus();
       if (bonus) {
-        G.save();
-        U.renderAll();
-        setTimeout(function () { U.toast('오늘의 출석 보너스 +' + bonus + ' 코인!'); if (window.SFX) SFX.coin(); }, 900);
+        G.save(); U.renderAll();
+        setTimeout(function () {
+          U.toast('오늘의 출석 보너스 +' + bonus + ' 코인!');
+          if (window.SFX) SFX.coin();
+        }, 900);
       }
-    } else if (hasPet && G.state.pet && G.state.pet.dead) {
-      U.showGame();
-      U.renderAll();
-      U.farewell();
+    } else if (has && G.dog && G.dog.dead) {
+      U.showGame(); U.renderAll(); U.farewell();
     } else {
       U.showIntro();
     }
@@ -55,20 +54,16 @@
   }
 
   document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'visible') { pulse(true); startLoop(); }
-    else { G.save(); }
+    if (document.visibilityState === 'visible') { pulse(true); startLoop(); U.startLoop(); }
+    else { G.save(); U.stopLoop(); }
   });
   window.addEventListener('pagehide', function () { G.save(); });
   window.addEventListener('beforeunload', function () { G.save(); });
-
-  window.addEventListener('beforeinstallprompt', function (e) {
-    e.preventDefault();
-    window.__pocoInstall = e;
-  });
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.__dogInstall = e; });
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function () { /* 오프라인 캐시는 없어도 게임은 돌아간다 */ });
+      navigator.serviceWorker.register('sw.js').catch(function () {});
     });
   }
 

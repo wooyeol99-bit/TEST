@@ -1,14 +1,15 @@
 /* 포코펫 서비스워커 — 앱 셸을 캐시해 오프라인에서도 열리게 한다. */
-var CACHE = 'pocopet-v1';
+var CACHE = 'dogpet-v1';
 var ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
   './css/game.css',
+  './js/breeds.js',
+  './js/dog.js',
   './js/data.js',
   './js/sound.js',
   './js/state.js',
-  './js/pet.js',
   './js/minigames.js',
   './js/ui.js',
   './js/app.js',

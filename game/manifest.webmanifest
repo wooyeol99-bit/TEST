@@ -1,7 +1,7 @@
 {
-  "name": "포코펫 — 나만의 애완 다마고치",
-  "short_name": "포코펫",
-  "description": "알에서 깨어난 펫을 밥·놀이·목욕으로 돌보며 어른으로 키우는 다마고치 게임. 오프라인에서도 즐길 수 있습니다.",
+  "name": "우리집 강아지 — 신생아부터 성견까지",
+  "short_name": "우리집 강아지",
+  "description": "진돗개·시바·골든리트리버 등 실제 견종 9종을 갓 태어난 날부터 성견까지 키우는 육아 시뮬레이션. 접종·산책·훈련·미용을 직접 챙깁니다.",
   "lang": "ko",
   "dir": "ltr",
   "start_url": ".",
@@ -10,9 +10,9 @@
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
-  "background_color": "#fffaf2",
-  "theme_color": "#4c9f70",
-  "categories": ["games", "entertainment", "kids"],
+  "background_color": "#fdf8f1",
+  "theme_color": "#7a5230",
+  "categories": ["games", "entertainment", "education"],
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
