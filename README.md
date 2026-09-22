@@ -119,6 +119,16 @@ GPTBot, ClaudeBot, PerplexityBot, Googlebot 모두 접힌 내용까지 읽습니
 - 메뉴는 작고 자간 넓은 600, 제목은 진한 700, 설명은 흐린 회색 — 역할별로 대비를 다르게
 - 모서리 둥글기 없음(직각), 그림자 없음, 구분은 1px 라인으로만
 - 사진은 **컬러**로 표시합니다. UI 아이콘(이모지)만 모노톤 유지
+- 시공 사례 사진은 **최대 높이 540px**(모바일 420px)로 제한해 글과 사진이 한 화면에 같이 들어오게 합니다.
+  전/후 비교 블록과 갤러리도 본문 폭보다 좁게 잡아 가운데 정렬합니다
+- **로고를 장식 요소로** 씁니다. 모두 `aria-hidden` 배경 이미지라 스크린리더와 크롤러에는 잡히지 않습니다
+
+| 요소 | 위치 | 쓰는 로고 |
+|---|---|---|
+| `.brand-mark` | 각 페이지 제목 위 | `logo-mark-black` |
+| `.brand-divider` | CTA 배너 제목 위 (가는 선 사이에 마크) | `logo-mark-white` |
+| `.cta-band::before` | CTA 배너 배경 워터마크 (opacity 0.035) | `logo-mark-white` |
+| `.post-end` | 시공기 본문 끝 콜로폰 | `logo-mark-black` |
 - 본문 폰트 Pretendard(CDN), 실패 시 Apple SD Gothic Neo / 맑은 고딕으로 대체
 
 ## 견적 문의를 문자로 받기

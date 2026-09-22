@@ -637,13 +637,28 @@ h3 { letter-spacing: -0.4px; }
 }
 .post-meta strong { color: var(--ink); font-weight: 700; }
 
-.post figure { margin: 0 0 26px; }
-.post figure img { width: 100%; height: auto; background: var(--paper); }
+.post figure { margin: 0 0 30px; }
+/* 네이버 블로그처럼 사진을 본문 폭보다 작게 두어 글과 사진이 한 화면에 같이 들어오게 한다.
+   세로 사진이 화면을 다 먹지 않도록 높이로 제한하고 가로는 자동으로 따라가게 둔다. */
+.post figure img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 540px;
+  margin: 0 auto;
+  background: var(--paper);
+}
 .post figcaption {
+  max-width: 620px;
+  margin: 0 auto;
   padding: 12px 2px 0;
   font-size: 0.86rem;
   line-height: 1.6;
   color: var(--grey-400);
+}
+@media (max-width: 600px) {
+  .post figure img { max-height: 420px; }
 }
 
 .phase {
@@ -684,6 +699,9 @@ h3 { letter-spacing: -0.4px; }
 
 .gallery {
   display: grid;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--line);
@@ -716,7 +734,9 @@ h3 { letter-spacing: -0.4px; }
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
-  margin: 0 0 30px;
+  /* 두 장을 나란히 두되 본문 폭보다 좁게 잡아 글과 함께 읽히도록 한다 */
+  max-width: 620px;
+  margin: 0 auto 30px;
 }
 .compare > figure { position: relative; margin: 0; background: var(--white); }
 .compare > figure img {
@@ -795,6 +815,89 @@ h3 { letter-spacing: -0.4px; }
 .more[open] > summary { color: var(--ink); border-bottom: 1px solid var(--line); }
 .more > *:not(summary) { margin-top: 16px; margin-bottom: 0; }
 .more > *:last-child { margin-bottom: 16px; }
+
+/* ---------- 브랜드 오너먼트 ----------
+   로고를 장식 요소로 쓴다. 모두 alt 없는 배경 이미지라 스크린리더·크롤러에는 잡히지 않는다. */
+
+/* 섹션 사이 구분선. 가는 선 두 줄 사이에 S&N 마크를 앉힌다. */
+.brand-divider {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 4px 0;
+}
+.brand-divider::before,
+.brand-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.brand-divider i {
+  flex: none;
+  width: 26px;
+  height: 23px;
+  background: url("../images/logo-mark-black.png") center / contain no-repeat;
+  opacity: 0.5;
+}
+.section-dark .brand-divider::before,
+.section-dark .brand-divider::after,
+.cta-band .brand-divider::before,
+.cta-band .brand-divider::after { background: rgba(255, 255, 255, 0.22); }
+.section-dark .brand-divider i,
+.cta-band .brand-divider i { background-image: url("../images/logo-mark-white.png"); opacity: 0.65; }
+
+/* 제목 블록 위에 놓는 작은 마크 */
+.post > .brand-mark,
+.section-head .brand-mark {
+  display: block;
+  width: 30px;
+  height: 27px;
+  margin: 0 auto 18px;
+  background: url("../images/logo-mark-black.png") center / contain no-repeat;
+  opacity: 0.42;
+}
+.section-dark .section-head .brand-mark,
+.section-deep .section-head .brand-mark {
+  background-image: url("../images/logo-mark-white.png");
+  opacity: 0.55;
+}
+
+.post > .brand-mark { margin: 0 0 16px; }
+
+/* 글 끝맺음 마크 (책 콜로폰처럼) */
+.post-end {
+  display: block;
+  width: 34px;
+  height: 30px;
+  margin: 54px auto 0;
+  background: url("../images/logo-mark-black.png") center / contain no-repeat;
+  opacity: 0.3;
+}
+
+/* 페이지 상단 제목 옆 워드마크가 들어가는 얇은 브랜드 바 */
+.brand-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 0 6px;
+}
+.brand-bar i {
+  width: 22px;
+  height: 20px;
+  background: url("../images/logo-mark-black.png") center / contain no-repeat;
+  opacity: 0.45;
+}
+.brand-bar span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey-400);
+}
 
 /* ---------- FAQ ---------- */
 .faq-item { border-bottom: 1px solid var(--line); }
@@ -926,13 +1029,31 @@ form.contact-form { display: grid; gap: 18px; }
 
 /* ---------- CTA band ---------- */
 .cta-band {
+  position: relative;
+  overflow: hidden;
   background: var(--black);
   color: var(--white);
   text-align: center;
   padding: 88px 0;
 }
-.cta-band h2 {
-  margin: 0 0 14px;
+/* 배지 로고를 아주 옅게 깔아 브랜드 인상을 남긴다 */
+.cta-band::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background: url("../images/logo-mark-white.png") center / contain no-repeat;
+  opacity: 0.035;
+  pointer-events: none;
+}
+.cta-band > * { position: relative; }
+.cta-band > .container > h2 {
+  margin: 22px 0 14px;
+  padding-top: 0;
+  border-top: 0;
   font-size: clamp(1.4rem, 2.6vw, 1.95rem);
   font-weight: 700;
   letter-spacing: -0.8px;
