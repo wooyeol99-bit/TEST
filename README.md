@@ -209,6 +209,39 @@ python3 -m http.server 8000
 - 진돗개·시바·코기처럼 귀가 서는 견종도 **새끼 때는 귀가 접혀** 있다가 생후 8~12주에 섭니다
 - 새끼는 머리가 크고 다리가 짧으며 털이 더 보송보송합니다
 
+## 안드로이드 APK로 설치하기
+
+웹 주소 없이 **앱 파일(APK)** 로 설치하고 싶을 때를 위해 안드로이드 앱 껍데기를 넣어 뒀습니다.
+`android/` 는 게임(`game/`)을 그대로 앱 안에 담아 웹뷰로 띄우는 최소한의 프로젝트입니다.
+
+- **인터넷 권한이 없습니다.** 앱이 밖으로 아무것도 보내지 않고, 비행기 모드에서도 돌아갑니다.
+- 게임 파일을 복사하지 않고 `../game` 을 그대로 assets 으로 가져다 씁니다. 게임을 고치면 APK도 같이 바뀝니다.
+
+### 받는 곳
+
+`game/` 이나 `android/` 가 바뀌면 GitHub Actions가 자동으로 APK를 만들어 `apk` 태그 릴리스에 올립니다.
+휴대폰에서 아래 주소를 누르면 바로 내려받을 수 있습니다.
+
+```
+https://github.com/wooyeol99-bit/TEST/releases/latest/download/woorijip-gangaji.apk
+```
+
+설치할 때 **`출처를 알 수 없는 앱`** 허용이 한 번 필요합니다 (설정 → 앱 → 특별한 앱 접근 → 알 수 없는 앱 설치).
+
+### 직접 빌드하려면
+
+안드로이드 SDK가 있는 컴퓨터에서:
+
+```bash
+cd android
+./gradlew assembleRelease
+# android/app/build/outputs/apk/release/app-release.apk
+```
+
+`android/keystore/dogpet.jks` 는 **사이드로드 전용 서명키**입니다. 비밀번호가 저장소에 그대로 적혀 있어
+플레이스토어 배포에는 쓸 수 없지만, 키가 고정돼 있어야 다음 버전을 **덮어쓰기로 설치**할 수 있습니다.
+스토어에 올릴 일이 생기면 새 키를 만들어 `android/app/build.gradle` 의 `signingConfigs` 만 바꾸면 됩니다.
+
 ## 설치 (홈 화면에 추가)
 
 | 기기 | 방법 |
@@ -235,6 +268,8 @@ python3 -m http.server 8000
 | `game/js/app.js` | 시작 처리와 20초마다 도는 시간 루프 |
 | `game/sw.js` | 서비스워커. 파일을 고친 뒤에는 `CACHE` 버전 문자열을 올려주세요 |
 | `game/icons/` | 아이콘 PNG. `tools/icon.html`로 다시 만들 수 있습니다 |
+| `android/` | APK용 안드로이드 앱 껍데기 (웹뷰 한 장, 인터넷 권한 없음) |
+| `.github/workflows/android-apk.yml` | APK 자동 빌드 — 결과는 `apk` 태그 릴리스로 올라갑니다 |
 
 기록은 브라우저 `localStorage`(`dogpet.save.v2`)에만 저장됩니다.
 서버로 아무것도 보내지 않으므로 아이가 써도 개인정보가 나갈 일이 없고, 대신 기기를 바꾸면 기록도 새로 시작합니다.
