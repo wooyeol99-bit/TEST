@@ -1,0 +1,70 @@
+# 우리집 강아지 — 안드로이드 APK 자동 빌드
+#
+# game/ 이나 android/ 가 바뀌면 GitHub 서버가 알아서 APK 를 만들고,
+# "apk" 태그의 릴리스에 올립니다. 휴대폰에서 아래 주소를 누르면 바로 내려받아 설치할 수 있습니다.
+#   https://github.com/wooyeol99-bit/TEST/releases/latest/download/woorijip-gangaji.apk
+
+name: Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'game/**'
+      - 'android/**'
+      - '.github/workflows/android-apk.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 소스 가져오기
+        uses: actions/checkout@v4
+
+      - name: 자바 17 준비
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 안드로이드 SDK 확인
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-34" "build-tools;34.0.0" || true
+
+      - name: APK 빌드
+        working-directory: android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --no-daemon clean assembleRelease
+
+      - name: 파일 이름 정리
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/release/app-release.apk out/woorijip-gangaji.apk
+          ls -lh out/
+
+      - name: 워크플로 결과물로 첨부
+        uses: actions/upload-artifact@v4
+        with:
+          name: woorijip-gangaji-apk
+          path: out/woorijip-gangaji.apk
+          if-no-files-found: error
+
+      - name: 릴리스에 올리기 (휴대폰에서 바로 받는 주소)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete apk --yes --cleanup-tag || true
+          gh release create apk out/woorijip-gangaji.apk \
+            --target "$GITHUB_SHA" \
+            --title "우리집 강아지 APK" \
+            --notes "휴대폰에서 아래 파일을 눌러 받아 설치하세요.
+
+          - 설치할 때 \`출처를 알 수 없는 앱\` 허용이 한 번 필요합니다.
+          - 인터넷 권한이 없는 앱이라 비행기 모드에서도 돌아갑니다.
+          - 빌드 커밋: $GITHUB_SHA"

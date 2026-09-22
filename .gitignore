@@ -1,0 +1,7 @@
+# 안드로이드 빌드 결과물
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.iml

@@ -1,0 +1,21 @@
+{
+  "name": "우리집 강아지 — 신생아부터 성견까지",
+  "short_name": "우리집 강아지",
+  "description": "진돗개·시바·골든리트리버 등 실제 견종 9종을 갓 태어난 날부터 성견까지 키우는 육아 시뮬레이션. 접종·산책·훈련·미용을 직접 챙깁니다.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "id": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#fdf8f1",
+  "theme_color": "#7a5230",
+  "categories": ["games", "entertainment", "education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

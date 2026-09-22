@@ -1,0 +1,47 @@
+plugins { id 'com.android.application' }
+
+android {
+  namespace 'kr.onnonmaru.dogpet'
+  compileSdk 34
+
+  defaultConfig {
+    applicationId "kr.onnonmaru.dogpet"
+    minSdk 21
+    targetSdk 34
+    versionCode 1
+    versionName "1.0"
+  }
+
+  /* 사이드로드용 고정 서명키. 공개된 디버그용 키라 스토어 배포에는 쓸 수 없지만,
+     키가 고정돼 있어야 다음 버전을 덮어쓰기로 설치할 수 있다. */
+  signingConfigs {
+    sideload {
+      storeFile file("$rootDir/keystore/dogpet.jks")
+      storePassword "dogpet"
+      keyAlias "dogpet"
+      keyPassword "dogpet"
+    }
+  }
+
+  buildTypes {
+    debug { signingConfig signingConfigs.sideload }
+    release {
+      minifyEnabled false
+      signingConfig signingConfigs.sideload
+    }
+  }
+
+  /* 웹 게임 파일(../game)을 그대로 앱 assets 으로 넣는다. 복사본을 두지 않는다. */
+  sourceSets {
+    main {
+      assets.srcDirs += file("$rootDir/../game")
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+
+  lint { abortOnError false }
+}
